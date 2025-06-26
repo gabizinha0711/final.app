@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RammAccess</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+    }
+
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link:hover {
+      background-color: #9c1a24 !important;
+    }
+
+    .profile-icon {
+      font-size: 24px;
+      color: #bd202e;
+      cursor: pointer;
+    }
+
+    .auth-menu {
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .auth-menu button {
+      padding: 10px;
+      border: none;
+      background-color: white;
+      color: #bd202e;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .auth-menu button:hover {
+      background-color: #f0f0f0;
+    }
+
+    .form-container {
+      display: none;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      margin-top: 20px;
+    }
+
+    .form-container.active {
+      display: block;
+    }
+
+    .footer-image {
+      width: 100%;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body onclick="closeAuthMenu(event)">
+  <header class="container-fluid py-2 px-4 d-flex justify-content-between align-items-center">
+    <img src="data/logo_.png" alt="RammAccess Logo" height="70">
+    <div class="position-relative">
+      <i class="fas fa-user-circle profile-icon" onclick="toggleAuthMenu(event)"></i>
+      <div class="auth-menu" id="authMenu">
+        <button onclick="showLogin()">Login</button>
+        <button onclick="showRegister()">Criar Conta</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 d-flex justify-content-around">
+          <li class="nav-item"><a class="nav-link text-white" href="index.html">Sobre Nós</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="eventos.html">Próximos Eventos</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="apoio.html">Apoio ao Cliente</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="meet.html">Meet & Greet</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="soundcheck.html">Soundcheck</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="form-container" id="loginForm">
+      <h2>Login</h2>
+      <input type="text" id="loginUsername" class="form-control mb-2" placeholder="Utilizador">
+      <input type="password" id="loginPassword" class="form-control mb-2" placeholder="Palavra-passe">
+      <button class="btn btn-danger w-100" onclick="login()">Entrar</button>
+    </div>
+
+    <div class="form-container" id="registerForm">
+      <h2>Registo</h2>
+      <input type="text" id="registerUsername" class="form-control mb-2" placeholder="Utilizador">
+      <input type="password" id="registerPassword" class="form-control mb-2" placeholder="Palavra-passe">
+      <button class="btn btn-danger w-100" onclick="register()">Criar Conta</button>
+    </div>
+
+
+   <section id="sobre-nos">
+   <br>
+   <br>
+  <h2>Sobre a RammAccess</h2>
+
+  <p>A RammAccess é uma empresa especializada em proporcionar experiências únicas e exclusivas aos fãs da icónica banda alemã Rammstein.</p>
+  
+  <p>A nossa missão é aproximar os fãs do universo intenso, criativo e enigmático da banda, oferecendo acesso privilegiado aos <strong>bastidores</strong>, <strong>ensaios</strong> e momentos que normalmente permanecem fora do alcance do público.</p>
+  
+  <p>Com um serviço altamente personalizado, criamos oportunidades inesquecíveis como:</p>
+  
+  <ul>
+    <li>Sessões de <strong>Meet & Greet</strong> com os membros da banda</li>
+    <li>Participação em <strong>soundchecks privados</strong></li>
+    <li>Visitas guiadas aos bastidores antes dos concertos</li>
+    <li>Acesso a merchandising exclusivo e edições limitadas</li>
+  </ul>
+  
+  <p>Cada detalhe da experiência é pensado para garantir não só a máxima emoção, mas também a <strong>segurança, conforto e autenticidade</strong> que os fãs merecem. Trabalhamos em estreita colaboração com promotoras oficiais, equipas de produção e os próprios artistas para assegurar que tudo decorra com profissionalismo e respeito.</p>
+  
+  <p><strong>Na RammAccess, não vendemos apenas bilhetes. Entregamos momentos que ficarão gravados para sempre na memória de cada fã.</strong></p>
+</section>
+<a href=" https://gabizinha0711.github.io/rammaccess/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+  <button style="padding:10px 20px; background-color:#d00; color:white; border:none; border-radius:5px; cursor:pointer;">
+    Visita o nosso site oficial
+  </button>
+</a>
+
+ 
+
+    <div id="profile" class="text-center my-4" style="display:none">
+      <p id="welcomeUser" class="fw-bold"></p>
+    </div>
+  </div>
+
+  <footer class="text-center mt-5">
+    <img src="data/arquivo.png" alt="RammAccess Logo" height="800">
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function toggleAuthMenu(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('authMenu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function closeAuthMenu(event) {
+      const menu = document.getElementById('authMenu');
+      if (!event.target.closest('.auth-menu') && !event.target.closest('.profile-icon')) {
+        menu.style.display = 'none';
+      }
+    }
+
+    function showLogin() {
+      document.getElementById('authMenu').style.display = 'none';
+      document.getElementById('loginForm').classList.add('active');
+      document.getElementById('registerForm').classList.remove('active');
+    }
+
+    function showRegister() {
+      document.getElementById('authMenu').style.display = 'none';
+      document.getElementById('registerForm').classList.add('active');
+      document.getElementById('loginForm').classList.remove('active');
+    }
+
+    function register() {
+      const username = document.getElementById('registerUsername').value;
+      const password = document.getElementById('registerPassword').value;
+      if (username && password) {
+        localStorage.setItem('user_' + username, password);
+        alert('Conta criada com sucesso!');
+        showLogin();
+      } else {
+        alert('Preenche todos os campos.');
+      }
+    }
+
+    function login() {
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+      const storedPassword = localStorage.getItem('user_' + username);
+      if (storedPassword === password) {
+        document.getElementById('profile').style.display = 'block';
+        document.getElementById('welcomeUser').innerText = 'Bem-vindo, ' + username + '!';
+        document.getElementById('loginForm').classList.remove('active');
+        document.getElementById('registerForm').classList.remove('active');
+        document.getElementById('authMenu').style.display = 'none';
+      } else {
+        alert('Credenciais inválidas.');
+      }
+    }
+
+    function logout() {
+      document.getElementById('profile').style.display = 'none';
+      document.getElementById('welcomeUser').innerText = '';
+      document.getElementById('authMenu').style.display = 'none';
+      document.getElementById('loginForm').classList.remove('active');
+      document.getElementById('registerForm').classList.remove('active');
+      alert('Sessão terminada com sucesso.');
+    }
+  </script>
+</body>
+
+</html>
